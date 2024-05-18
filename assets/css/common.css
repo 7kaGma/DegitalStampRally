@@ -9,7 +9,8 @@ body{
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  background-color: antiquewhite;
+  background-color: #ffffff;
+  background-image: linear-gradient(0deg, #ffffff 0%, #f2e7f2 100%);
   display: flex;
   justify-content:center;
   align-items: center;
@@ -19,22 +20,39 @@ body{
   width: 100%;
   height: 100%;
   max-width: 430px;
-  background-color: white;
+  background-color:lightgray;
+  box-sizing: border-box;
 }
+
 .header{
   width: 100%;
   max-width: 430px;
   height: 60px;
   box-sizing: border-box;
   position: fixed;
-  background-color:lightgray;
+  background-color:white;
+  z-index: 100;
 }
+
 .footer{
   width: 100%;
   max-width: 430px;
-  height: 60px;
   box-sizing: border-box;
   position: fixed;
   bottom: 0;
-  background-color:lightgray;
+  background-color:white;
+  z-index: 100;
+}
+.footer__frame{
+  display: flex;
+  height: 70px
+}
+.aBtn{
+  text-decoration: none;
+  display: block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }

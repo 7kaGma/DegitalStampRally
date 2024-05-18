@@ -1,0 +1,36 @@
+@charset "UTF-8";
+#map{
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+.linkCamera{
+  width: 100%;
+  height: 90px;
+  background-color: white;
+  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.linkCamera__btn{
+  display: block;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(231, 231, 231);
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.linkCamera__btn.active{ 
+  background-color: pink;
+}
+
+.linkCamera__btn.active:hover{
+  filter: brightness(0.8);
+}
