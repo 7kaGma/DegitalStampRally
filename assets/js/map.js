@@ -24,6 +24,7 @@ const options = {
 }
 
 /*関数群*/
+/*マップ全般の処理を担うメインの関数*/
 async function getMap(){
   await initMap();
   setLandmark();
@@ -33,6 +34,7 @@ async function getMap(){
   getPosition();
 }
 
+/*マップの設置*/
 async function initMap(){
   const{Map} =await google.maps.importLibrary("maps");
   map = new Map(document.getElementById("map"), {
@@ -41,6 +43,7 @@ async function initMap(){
   });
 }
 
+/*現在地の取得とマーカーの設置*/
 function getPosition(){
   if ("geolocation" in navigator) {
     watchId = navigator.geolocation.watchPosition(successful, unsuccessful, options);
@@ -75,6 +78,7 @@ function setLandmark(){
   });
 }
 
+/*距離に応じてAnkerタグをオンオフ*/
 function ankerAvailable (){
   let distanceA =Math.round(calcDistance(pos,locationA));
   let distanceB =Math.round(calcDistance(pos,locationB));
@@ -85,12 +89,15 @@ function judge(distanceA,distanceB){
   const linkCameraBtn = document.querySelector(".linkCamera__btn");
   if(distanceA<100 || distanceB<100){
   linkCameraBtn.classList.add("active");
+  linkCameraBtn.removeEventListener("click",preventDefaultHandler)
   }else{
     linkCameraBtn.classList.remove("active");
-    linkCameraBtn.addEventListener("click",(e)=>{
-      e.preventDefault();
-    })
+    linkCameraBtn.addEventListener("click",preventDefaultHandler)
   }
+}
+
+function preventDefaultHandler(e){
+  e.preventDefault();
 }
 
 function calcDistance (pos,location){
@@ -105,15 +112,8 @@ function calcDistance (pos,location){
   lng2 *= R;
   return (6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2)))*1000;
 }
+
 /*==========
-読み込み時処理
+処理
 ==========*/
-/*地図の生成と現在位置の取得*/
 getMap();
-
-
-/*==========
-イベントハンドラ
-==========*/
-
-/*関数群*/
