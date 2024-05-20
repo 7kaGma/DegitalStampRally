@@ -3,12 +3,14 @@
 /*定数と変数*/
 let map; 
 let watchId;
-let latitude;
-let longitude;
-let pos;
 let marker;
 let locationMarkerA;
 let locationMarkerB;
+
+// 位置情報
+let latitude;
+let longitude;
+let pos;
 const initialVal ={lat:35.71003238031915, lng:139.52313091592086};
 //法政大図書館
 const locationA={lat:35.709443978852676, lng:139.52235862613207};
@@ -17,6 +19,9 @@ const locationA={lat:35.709443978852676, lng:139.52235862613207};
 //電大附属
 const locationB={lat:35.70649846021312, lng:139.5259753757966};
 
+// 要素
+const linkCameraBtn = document.querySelector(".linkCamera__btn");
+// その他
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -86,7 +91,6 @@ function ankerAvailable (){
 }
 
 function judge(distanceA,distanceB){
-  const linkCameraBtn = document.querySelector(".linkCamera__btn");
   if(distanceA<100 || distanceB<100){
   linkCameraBtn.classList.add("active");
   linkCameraBtn.removeEventListener("click",preventDefaultHandler)
@@ -117,3 +121,9 @@ function calcDistance (pos,location){
 処理
 ==========*/
 getMap();
+/*クリックイベント*/
+linkCameraBtn.addEventListener("click",()=>{
+  const key = "cameraPos";
+  localStorage.setItem(key,JSON.stringify(pos));
+});
+
