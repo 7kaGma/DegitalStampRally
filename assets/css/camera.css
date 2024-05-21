@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+#video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#canvasFrame{
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  aspect-ratio: 1/1;
+  top:50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+#canvas{display: none;}
+
+.camera__footer{
+  width: 100%;
+  max-width: 430px;
+  height: 140px;
+  background-color:black;
+  position: fixed;
+  bottom: 0;
+}
+
+.camera__btnArea{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items:center ;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+.back{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.2);
+  position: relative;
+}
+
+.back:active{
+  filter: brightness(0.8);
+}
+.back span{
+  width: 30%;
+  height: 30%;
+display: block;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: rotate(45deg) translate(-50%,-25%);
+border-bottom: 3px solid white;
+border-left: 3px solid white;
+}
+
+#photo{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: black;
+  border:4px solid white ;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#photo div{
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#photo div:active{
+  transform: translate(-50%,-50%) scale(0.9);
+}
+
+#photo:active{
+  filter: brightness(0.8);
+}
+
+#switchBtn{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.2);
+  position: relative;
+}
+#switchBtn img{
+  display: block;
+  position: absolute;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#switchBtn:active{
+  filter: brightness(0.8);
+}
+
+/*撮影後の表示画面*/
+.postProcess{
+  display: none;
+  opacity: 0;
+  width: 100vw;
+  max-width: 430px;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-inline: 20px;
+  background-color: white;
+  position: fixed;
+  z-index: 1000;
+}
+.postProcess.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadein 0.25s steps(6) forwards 0.25s;
+}
+
+@keyframes fadein{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+#photograph{
+  width: 100%;
+}
