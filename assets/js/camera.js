@@ -2,15 +2,16 @@
 "use strict";
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
-
+let facemode =true;
+let mode;
 let setting;
 
 // ビデオカメラの取得
 function initVideoCamera() {
-  
+  modejude();
   navigator.mediaDevices.getUserMedia({ 
     video:{
-      facingMode:'user'},
+      facingMode:mode},
     audio: false, 
   })
   .then((stream) => {
@@ -24,6 +25,16 @@ function initVideoCamera() {
   })
 }
 
+// facemodeの制御
+function modejude(){
+  if(facemode){
+    mode = 'user';
+  }else if (!facemode){
+    mode =  { exact: 'environment' };
+  }
+}
+
+// 写真の撮影
 function capture(){
   const context =canvas.getContext("2d");
   const screen = video.getBoundingClientRect();
@@ -36,6 +47,16 @@ function capture(){
   context.drawImage(video,0,0,canvas.width,canvas.height);
   const dataURL =canvas.toDataURL("image/png");
   document.getElementById("photograph").src=dataURL
+}
+
+// ビデオの停止処理
+function stopVideo(video){
+let streaming = video.srcObject;
+let tracks =streaming.getTracks();
+tracks.forEach((track)=>{
+  track.stop();
+})
+console.log('CameraStop');
 }
 
 /*==========
@@ -53,3 +74,14 @@ document.getElementById("photo").addEventListener('click',function(){
 });
 
 /*switchボタン*/
+document.getElementById('switchBtn').addEventListener('click',()=>{
+  stopVideo(video);//ビデオの停止処理
+  if(facemode){
+    facemode=false;
+  }else{
+    facemode=true;
+  }
+  console.log(facemode);
+  modejude();
+  initVideoCamera();//カメラの表示処理
+})
