@@ -35,6 +35,7 @@ function modejude(){
 }
 
 // 写真の撮影
+const photograph =document.getElementById('photograph');
 function capture(){
   const context =canvas.getContext("2d");
   const screen = video.getBoundingClientRect();
@@ -46,7 +47,7 @@ function capture(){
   canvas.height=Math.round(screenwidth/ratio);
   context.drawImage(video,0,0,canvas.width,canvas.height);
   const dataURL =canvas.toDataURL("image/png");
-  document.getElementById("photograph").src=dataURL
+  photograph.src=dataURL
 }
 
 // ビデオの停止処理
@@ -84,4 +85,17 @@ document.getElementById('switchBtn').addEventListener('click',()=>{
   console.log(facemode);
   modejude();
   initVideoCamera();//カメラの表示処理
-})
+});
+
+/*画像の保存*/
+const downloadBtn =document.getElementById('download');
+downloadBtn.addEventListener('click',()=>{
+const imgSrc =photograph.src;
+downloadBtn.href=imgSrc;
+downloadBtn.download ='image.png'
+});
+
+/*カメラに戻る*/
+document.querySelector('.backCamera').addEventListener('click',()=>{
+  document.querySelector(".postProcess").classList.remove('active');
+});

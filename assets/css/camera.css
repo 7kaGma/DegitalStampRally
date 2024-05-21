@@ -123,13 +123,16 @@ border-left: 3px solid white;
   height: 100vh;
   box-sizing: border-box;
   padding-inline: 20px;
+  padding-block-start: 20px;
+  padding-block-end: 70px;
   background-color: white;
   position: fixed;
   z-index: 1000;
 }
+
 .postProcess.active{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   animation: fadein 0.25s steps(6) forwards 0.25s;
@@ -138,12 +141,51 @@ border-left: 3px solid white;
 @keyframes fadein{
   0%{
     opacity: 0;
+    
   }
   100%{
     opacity: 1;
   }
 }
 
+
 #photograph{
   width: 100%;
+}
+
+#download{
+  display: block;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto;
+  text-decoration: none;
+  background-color:#59D100
+}
+
+.quite{
+  display: block;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(207, 207, 207);
+  text-align: center;
+  line-height: 50px;
+  margin: 20px auto 0px;
+  text-decoration: none;
+}
+
+.backFrame{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.backCamera{
+  background-color: rgb(207, 207, 207);
 }
