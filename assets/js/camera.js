@@ -1,5 +1,4 @@
 "use strict";
-"use strict";
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const photoFrame =document.getElementById("photoFrame");
@@ -35,7 +34,7 @@ async function initVideoCamera() {
 function photoFrameSet(){
   console.log(photoFrame);
   const context =photoFrame.getContext("2d");
-  /*cancasのセット*/
+  /*canvasのセット*/
   const screen = video.getBoundingClientRect();
   const screenwidth = screen.width;
   console.log(screenwidth);
@@ -66,19 +65,33 @@ function modejude(){
 }
 
 // 写真の撮影
-const photograph =document.getElementById('photograph');
+const photograph =document.getElementById('photograph'); 
+const synthesis  =document.getElementById('synthesis');
+
+
 function capture(){
   const context =canvas.getContext("2d");
   const screen = video.getBoundingClientRect();
   const screenwidth = screen.width;
-  console.log(screenwidth);
   const ratio = setting.aspectRatio;
   console.log(ratio);
   canvas.width=screenwidth;
   canvas.height=Math.round(screenwidth/ratio);
   context.drawImage(video,0,0,canvas.width,canvas.height);
-  const dataURL =canvas.toDataURL("image/png");
-  photograph.src=dataURL
+
+  const photoFrame =document.getElementById('photoFrame');
+
+  const resultContext=synthesis.getContext("2d");
+  synthesis.width=screenwidth;
+  synthesis.height=Math.round(screenwidth/ratio);
+  const canvasSelector =document.querySelectorAll('.canvasSelector');
+
+  canvasSelector.forEach((canvas)=>{
+    resultContext.drawImage(canvas, 0, 0, synthesis.width, synthesis.height);
+  });
+  
+  const dataURL =synthesis.toDataURL("image/png");
+  photograph.src=dataURL;
 }
 
 // ビデオの停止処理

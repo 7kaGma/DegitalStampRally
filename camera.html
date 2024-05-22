@@ -29,9 +29,10 @@
       <div class="camera__header">
       </div>
       <video id="video"></video>
-      <canvas id="photoFrame"><img src="./assets/img/zunko1.png" alt="東北ずん子"></canvas>
-      <canvas id="canvas"></canvas>
-      <canvas id="synthesis"></canvas>
+      <canvas crossorigin="anonymous" id="canvas" class="canvasSelector"></canvas>
+      <canvas crossorigin="anonymous" id="photoFrame" class="canvasSelector"></canvas>
+      <canvas crossorigin="anonymous" id="synthesis"></canvas>
+
       <div class="camera__footer">
         <div class="camera__btnArea">
           <a class="back" href="./map.html"><span></span></a>
@@ -44,6 +45,7 @@
     </div>
   </div>
   <script src="./assets/js/camera.js"></script>
+  <script type="text/javascript" src="https://cdn-host.com/application.js" crossorigin></script>
 </body>
 
 </html>
