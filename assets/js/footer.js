@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     mainBtn.removeEventListener('click',preventDefaultHandler);
     mapBtn.classList.add('aBtnActive');
     mainBtn.classList.remove('aBtnActive');
-  }else if(window.location.pathname.endsWith("/main.html")){
+  }else if(window.location.pathname.endsWith("/index.html")){
     mainBtn.addEventListener('click',preventDefaultHandler);
     mapBtn.removeEventListener('click',preventDefaultHandler);
     mainBtn.classList.add('aBtnActive');
