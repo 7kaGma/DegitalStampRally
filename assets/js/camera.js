@@ -6,6 +6,9 @@ const photoFrame =document.getElementById("photoFrame");
 let facemode =true;
 let mode;
 let setting;
+const frameMaterial=[
+  {url:"zunko1.png"}
+];
 
 // ビデオカメラの取得
 
@@ -25,12 +28,14 @@ async function initVideoCamera() {
       photoFrameSet();
     }).catch((error) => {
       alert("カメラにアクセスできません")
+      console.error("失敗");
   })
 }
 
 function photoFrameSet(){
   console.log(photoFrame);
   const context =photoFrame.getContext("2d");
+  /*cancasのセット*/
   const screen = video.getBoundingClientRect();
   const screenwidth = screen.width;
   console.log(screenwidth);
@@ -38,8 +43,17 @@ function photoFrameSet(){
   console.log(ratio);
   photoFrame.width=screenwidth;
   photoFrame.height=Math.round(screenwidth/ratio);
+  /*Frameの描画*/
+  const path =` ./assets/img/${frameMaterial[0].url}`;
+  const frameImage= new Image();
+  frameImage.src=path;
+  console.log(frameImage);
+  const x = photoFrame.width-155;
+  const y = photoFrame.height-200;
 
-  context.drawImage(image,0,0,)
+  frameImage.onload=()=>{
+    context.drawImage(frameImage,x,y,155,200);
+  };
 }
 
 // facemodeの制御
