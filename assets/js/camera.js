@@ -2,12 +2,14 @@
 "use strict";
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
+const photoFrame =document.getElementById("photoFrame");
 let facemode =true;
 let mode;
 let setting;
 
 // ビデオカメラの取得
-function initVideoCamera() {
+
+async function initVideoCamera() {
   modejude();
   navigator.mediaDevices.getUserMedia({ 
     video:{
@@ -20,9 +22,24 @@ function initVideoCamera() {
       const videoTrack = stream.getVideoTracks()[0];
       setting = videoTrack.getSettings();
       console.log(setting);
+      photoFrameSet();
     }).catch((error) => {
       alert("カメラにアクセスできません")
   })
+}
+
+function photoFrameSet(){
+  console.log(photoFrame);
+  const context =photoFrame.getContext("2d");
+  const screen = video.getBoundingClientRect();
+  const screenwidth = screen.width;
+  console.log(screenwidth);
+  const ratio = setting.aspectRatio;
+  console.log(ratio);
+  photoFrame.width=screenwidth;
+  photoFrame.height=Math.round(screenwidth/ratio);
+
+  context.drawImage(image,0,0,)
 }
 
 // facemodeの制御

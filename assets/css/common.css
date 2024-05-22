@@ -60,7 +60,7 @@ body{
 }
 .footer__frame{
   display: flex;
-  height: 70px
+  height: 70px;
 }
 .aBtn{
   text-decoration: none;
@@ -72,11 +72,16 @@ body{
   box-sizing: border-box;
   background-color:#FFE0EC;
   color: #FFFFFF;
+  font-size: 1.8rem;
   font-weight: bold;
   border-bottom:  rgb(231, 231, 231) solid 0.25px;
   box-sizing: border-box;
-
 }
+.aBtn p{
+  height: 100%;
+  line-height: 50px;
+}
+
 .aBtnActive{
   filter: brightness(0.9);
 }

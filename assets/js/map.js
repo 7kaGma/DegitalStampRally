@@ -17,7 +17,7 @@ const locationA={lat:35.709443978852676, lng:139.52235862613207};
 //江戸東京たてもの園
 // const locationA={lat:35.71700572259025, lng:139.51220896072294};
 //電大附属
-const locationB={lat:35.70649846021312, lng:139.5259753757966};
+// const locationB={lat:35.70649846021312, lng:139.5259753757966};
 
 // 要素
 const linkCameraBtn = document.querySelector(".linkCamera__btn");
@@ -77,21 +77,21 @@ function setLandmark(){
     map: map,
     position:locationA
   });
-  locationMarkerB= new google.maps.Marker({
-    map: map,
-    position:locationB
-  });
+  // locationMarkerB= new google.maps.Marker({
+  //   map: map,
+  //   position:locationB
+  // });
 }
 
 /*距離に応じてAnkerタグをオンオフ*/
 function ankerAvailable (){
   let distanceA =Math.round(calcDistance(pos,locationA));
-  let distanceB =Math.round(calcDistance(pos,locationB));
+  // let distanceB =Math.round(calcDistance(pos,locationB));
   judge(distanceA);
 }
 
-function judge(distanceA,distanceB){
-  if(distanceA<100 || distanceB<100){
+function judge(distanceA){
+  if(distanceA<100){
   linkCameraBtn.classList.add("active");
   linkCameraBtn.removeEventListener("click",preventDefaultHandler)
   }else{
@@ -99,6 +99,7 @@ function judge(distanceA,distanceB){
     linkCameraBtn.addEventListener("click",preventDefaultHandler)
   }
 }
+// 引数distanceBと条件分岐|| distanceB<100
 
 function preventDefaultHandler(e){
   e.preventDefault();
